@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnMexico = document.getElementById('btn-mexico');
   const storedCountry = localStorage.getItem('selected-country');
 
-  // If country already stored, apply texts and hide modal
   if (storedCountry) {
     modal.classList.add('hidden');
     document.body.className = 'country-' + storedCountry;
     updateTexts(storedCountry);
+    updateCatalogPrices(storedCountry);
   }
 
   btnArgentina.addEventListener('click', () => selectCountry('argentina'));
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.style.transition = '';
     }, 300);
     updateTexts(country);
+    updateCatalogPrices(country);
   }
 
   // ==========================================
@@ -196,21 +197,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const newsletterForm = document.getElementById('newsletter-form');
 
-  newsletterForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = newsletterForm.querySelector('input[type="email"]');
-    const btn = newsletterForm.querySelector('button');
-    const originalText = btn.textContent;
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = newsletterForm.querySelector('input[type="email"]');
+      const btn = newsletterForm.querySelector('button');
+      const originalText = btn.textContent;
 
-    btn.textContent = '¡Gracias! ✓';
-    btn.style.background = '#3D6B1E';
-    input.value = '';
+      btn.textContent = '¡Gracias! ✓';
+      btn.style.background = '#3D6B1E';
+      input.value = '';
 
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.style.background = '';
-    }, 2500);
-  });
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 2500);
+    });
+  }
 
   // ==========================================
   // 6. SMOOTH SCROLL
@@ -236,7 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        // Stagger animation slightly for elements in same section
         setTimeout(() => {
           entry.target.classList.add('animate-in');
         }, index * 80);
@@ -248,5 +250,52 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
   });
+
+  // ==========================================
+  // 8. CATALOG FILTERS
+  // ==========================================
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const catalogCards = document.querySelectorAll('.catalog-card');
+
+  if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        catalogCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('hidden-card');
+            card.style.animation = 'slideUp 0.4s ease forwards';
+          } else {
+            card.classList.add('hidden-card');
+          }
+        });
+      });
+    });
+  }
+
+  // ==========================================
+  // 9. CATALOG PRICES (country-aware)
+  // ==========================================
+  function updateCatalogPrices(country) {
+    const isMX = country === 'mexico';
+    document.querySelectorAll('.catalog-card-price').forEach(el => {
+      const arPrice = el.dataset.priceAr;
+      const mxPrice = el.dataset.priceMx;
+      if (arPrice && mxPrice) {
+        el.textContent = isMX ? mxPrice : arPrice;
+      }
+    });
+  }
+
+  // Run catalog price update if on catalog page
+  const currentCountry = localStorage.getItem('selected-country');
+  if (currentCountry && catalogCards.length > 0) {
+    updateCatalogPrices(currentCountry);
+  }
 
 });
