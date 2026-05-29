@@ -6,12 +6,10 @@
 // PRODUCT CATALOG
 // ==========================================
 const PRODUCTS = [
-  { id: 'espadin-joven', name: 'Espadín Joven', category: 'Joven', priceAr: 28900, priceMx: 700, alc: '44%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
-  { id: 'espadin-reposado', name: 'Espadín Reposado', category: 'Reposado', priceAr: 35500, priceMx: 850, alc: '42%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
-  { id: 'tobala', name: 'Tobalá', category: 'Silvestre', priceAr: 52000, priceMx: 1250, alc: '47%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
-  { id: 'cuishe', name: 'Cuishe', category: 'Silvestre', priceAr: 48000, priceMx: 1150, alc: '46%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
-  { id: 'madrecuishe', name: 'Madrecuishe', category: 'Silvestre', priceAr: 55000, priceMx: 1350, alc: '48%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
-  { id: 'ensamble', name: 'Ensamble Espadín-Tobalá', category: 'Ensamble', priceAr: 45000, priceMx: 1080, alc: '45%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
+  { id: 'clasico-premium', name: 'Clásico Premium', category: 'Premium', priceAr: 45100, priceMx: 32, alc: '44%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
+  { id: 'artesanal-rustico', name: 'Artesanal Rústico', category: 'Artesanal', priceAr: 42300, priceMx: 30, alc: '42%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
+  { id: 'moderno-black', name: 'Moderno Black', category: 'Premium', priceAr: 56400, priceMx: 40, alc: '46%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
+  { id: 'international-export', name: 'International Export', category: 'Premium', priceAr: 62000, priceMx: 44, alc: '48%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
 ];
 
 // ==========================================
@@ -118,7 +116,7 @@ function showToast(message) {
 function formatPrice(amount, country) {
   const isMX = country === 'mexico';
   if (isMX) {
-    return '$' + amount.toLocaleString('es-MX') + ' MXN';
+    return 'USD $' + amount.toLocaleString('en-US');
   }
   return '$' + amount.toLocaleString('es-AR') + ' ARS';
 }
@@ -184,12 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
       'Conectamos a productores mexicanos con vos, para que disfrutes un mezcal artesanal, de calidad y a un precio accesible.',
       'Conectamos a productores locales contigo, para que disfrutes un mezcal artesanal, de calidad y a un precio accesible.'
     );
-    setText('product-price', '$28.900 ARS', '$700 MXN');
+    setText('product-price', '$45.100 ARS', 'USD $32');
 
     // FAQ
     const faqAR = [
       { q: '¿Qué es?', a: 'Un mezcal importado de alta calidad producido en México' },
-      { q: '¿Cuánto sale?', a: 'Varía según el producto, para este ejemplo $28.900 ARS' },
+      { q: '¿Cuánto sale?', a: 'Varía según el producto, para este ejemplo $45.100 ARS' },
       { q: '¿Cuándo se paga?', a: 'Al momento de hacer el pedido por la página' },
       { q: '¿Cuándo sucede?', a: 'Luego de realizar el pago del producto' },
       { q: '¿Cómo se paga?', a: 'Con cualquier medio online habilitado' },
@@ -197,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     const faqMX = [
       { q: '¿Qué es?', a: 'Un mezcal artesanal producido en el país' },
-      { q: '¿Cuánto sale?', a: 'Varía según el producto, para este ejemplo $700 MXN' },
+      { q: '¿Cuánto sale?', a: 'Varía según el producto, para este ejemplo USD $32' },
       { q: '¿Cuándo se paga?', a: 'Al momento de poseer el producto físico' },
       { q: '¿Cuándo sucede?', a: 'Luego de realizar el pago del producto' },
       { q: '¿Cómo se paga?', a: 'Con cualquier medio habilitado' },
