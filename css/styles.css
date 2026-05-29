@@ -13,12 +13,69 @@
   --muted: #6B7B5E;
   --border: #D4CCBC;
   --card: #FDFCF8;
+  --hero-overlay: rgba(255,255,255,0.78);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
   --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
   --radius: 12px;
   --transition: 0.3s ease;
+}
+
+/* ============================================ */
+/* MEXICO COLOR SCHEME                          */
+/* ============================================ */
+body.country-mexico {
+  --primary: #8B2D0B;
+  --primary-light: #A63A12;
+  --primary-dark: #6B2008;
+  --primary-foreground: #FFF8F0;
+  --secondary: #F5EDE4;
+  --accent: #C4762A;
+  --background: #FFFBF7;
+  --foreground: #2E1506;
+  --muted: #8B7461;
+  --border: #E0CCBB;
+  --card: #FFFDF9;
+  --hero-overlay: rgba(255,248,240,0.78);
+}
+
+/* Country flag badge */
+.country-flag {
+  display: none;
+  font-size: 1.4rem;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+body.country-argentina .country-flag.flag-ar,
+body.country-mexico .country-flag.flag-mx {
+  display: inline;
+}
+
+/* Country banner strip */
+.country-banner {
+  display: none;
+  text-align: center;
+  padding: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+body.country-argentina .country-banner {
+  display: block;
+  background: linear-gradient(90deg, #74ACDF 0%, #74ACDF 33%, #FFFFFF 33%, #FFFFFF 50%, #F6B40E 50%, #F6B40E 52%, #FFFFFF 52%, #FFFFFF 67%, #74ACDF 67%, #74ACDF 100%);
+  color: transparent;
+  height: 4px;
+}
+
+body.country-mexico .country-banner {
+  display: block;
+  background: linear-gradient(90deg, #006847 0%, #006847 33%, #FFFFFF 33%, #FFFFFF 67%, #CE1126 67%, #CE1126 100%);
+  color: transparent;
+  height: 4px;
 }
 
 /* ============================================ */
@@ -506,7 +563,8 @@ ul {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.78);
+  background: var(--hero-overlay);
+  transition: background 0.5s ease;
 }
 
 .hero-grid {

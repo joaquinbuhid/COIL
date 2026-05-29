@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // If country already stored, apply texts and hide modal
   if (storedCountry) {
     modal.classList.add('hidden');
+    document.body.className = 'country-' + storedCountry;
     updateTexts(storedCountry);
   }
 
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function selectCountry(country) {
     localStorage.setItem('selected-country', country);
+    document.body.className = 'country-' + country;
     modal.style.opacity = '0';
     modal.style.transition = 'opacity 0.3s ease';
     setTimeout(() => {
