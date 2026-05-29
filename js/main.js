@@ -6,10 +6,10 @@
 // PRODUCT CATALOG
 // ==========================================
 const PRODUCTS = [
-  { id: 'clasico-premium', name: 'Clásico Premium', category: 'Premium', priceAr: 45100, priceMx: 32, alc: '44%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
-  { id: 'artesanal-rustico', name: 'Artesanal Rústico', category: 'Artesanal', priceAr: 42300, priceMx: 30, alc: '42%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
-  { id: 'moderno-black', name: 'Moderno Black', category: 'Premium', priceAr: 56400, priceMx: 40, alc: '46%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
-  { id: 'international-export', name: 'International Export', category: 'Premium', priceAr: 62000, priceMx: 44, alc: '48%', vol: '750ml', image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mezcal-jdgCJvvZKCyL3hi8HfYXwgTxOFoAdW.png' },
+  { id: 'clasico-premium', name: 'Clásico Premium', category: 'Premium', priceAr: 45100, priceMx: 32, alc: '44%', vol: '750ml', image: 'img/clasico-premium.png' },
+  { id: 'artesanal-rustico', name: 'Artesanal Rústico', category: 'Artesanal', priceAr: 42300, priceMx: 30, alc: '42%', vol: '750ml', image: 'img/artesanal-rustico.png' },
+  { id: 'moderno-black', name: 'Moderno Black', category: 'Premium', priceAr: 56400, priceMx: 40, alc: '46%', vol: '750ml', image: 'img/moderno-black.png' },
+  { id: 'international-export', name: 'International Export', category: 'Premium', priceAr: 62000, priceMx: 44, alc: '48%', vol: '750ml', image: 'img/international-export.png' },
 ];
 
 // ==========================================
@@ -478,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       msg += `\nTotal: ${formatPrice(total, country)}`;
 
-      const phone = isMX ? '5255xxxx' : '5411xxxx';
+      const phone = '543873050468';
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
       // Show confirmation
